@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ThatWas</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <h1>Enter a new Event</h1>
+        {% from "_formhelpers.html" import render_field %}
+        <form method=post action="/">
+        <dl>
+            {{ render_field(form.tag) }}
+            {{ render_field(form.author) }}
+            {{ render_field(form.start_datetime) }}
+            {{ render_field(form.end_datetime) }}
+            {{ render_field(form.description) }}
+        </dl>
+        <p><input type=submit value=Submit>
+        </form>
+
+        <script src="http://code.jquery.com/jquery.js"></script>
+    </body>
+</html>
