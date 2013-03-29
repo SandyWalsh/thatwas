@@ -77,8 +77,7 @@ def index():
 
 
 @app.route('/add', methods=['POST'])
-def index():
-    print "REQUEST", request.form
+def add():
     start = datetime.datetime.strptime(request.form['start'],
                                        "%Y-%m-%d %H:%M:%S")
     end = datetime.datetime.strptime(request.form['end'],
