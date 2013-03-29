@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>ThatWas</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>That Was ...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="static/css/bootstrap-responsive.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">That was ...</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <ul class=flashes>
@@ -15,19 +52,22 @@
             {% endif %}
         {% endwith %}
 
-        <h1>Enter a new Event</h1>
         {% from "_formhelpers.html" import render_field %}
         <form method=post action="/">
-        <dl>
-            {{ render_field(form.tag) }}
-            {{ render_field(form.author) }}
-            {{ render_field(form.start_datetime) }}
-            {{ render_field(form.end_datetime) }}
-            {{ render_field(form.description) }}
-        </dl>
-        <p><input type=submit value=Submit>
+        <legend>Enter a new Event</legend>
+        {{ render_field(form.tag, 'tag_name') }}
+        {{ render_field(form.author, 'foo@example.com') }}
+        {{ render_field(form.start_datetime) }}
+        {{ render_field(form.end_datetime) }}
+        {{ render_field(form.description) }}
+        <div class="controls">
+            <button type="submit" class="btn">Submit</button>
+        </div>
         </form>
 
-        <script src="http://code.jquery.com/jquery.js"></script>
-    </body>
+    </div> <!-- /container -->
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+  </body>
 </html>
+
