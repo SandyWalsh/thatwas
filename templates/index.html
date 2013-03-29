@@ -68,7 +68,7 @@
         <table class="table table-bordered table-hover">
            <thead>
            <tr>
-             <th></th>
+             <th>ID</th>
              <th>Tag</th>
              <th>From</th>
              <th>To</th>
@@ -78,7 +78,7 @@
            <tbody>
             {% for event in events %}
             <tr>
-            <td>{%if event.processed%}yes{%else%}no{%endif%}</td>
+            <td>{{event.id}}{%if event.processed%} (ok){%endif%}</td>
             <td>{{event.tag}}</td>
             <td>{{event.start}}</td>
             <td>{{event.end}}</td>

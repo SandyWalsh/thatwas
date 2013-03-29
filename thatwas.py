@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import datetime
 import requests
 
@@ -13,8 +15,9 @@ def add_event(ns):
     print requests.post("http://localhost:5000/add", data=payload)
 
 
-def rm_event(event):
-    print "Not implemented"
+def rm_event(ns):
+    payload = {'eid': ns.eid}
+    print requests.post("http://localhost:5000/rm", data=payload)
 
 
 def mkdate(datestring):
@@ -50,7 +53,7 @@ if __name__ == '__main__':
     parser_add.set_defaults(func=add_event)
 
     parser_rm = subparsers.add_parser('rm')
-    parser_rm.add_argument('tag')
+    parser_rm.add_argument('eid')
     parser_rm.set_defaults(func=rm_event)
 
     args = parser.parse_args()

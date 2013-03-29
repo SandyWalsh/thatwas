@@ -91,6 +91,16 @@ def add():
     return "Ok"
 
 
+@app.route('/rm', methods=['POST'])
+def rm():
+    eid = int(request.form['eid'])
+    event = Event.query.filter_by(id=eid).first_or_404()
+    db.session.delete(event)
+    db.session.commit()
+    return "Ok"
+
+
+
 if __name__ == "__main__":
     try:
         for x in Event.query.limit(1):
